@@ -4,4 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+     <ProjectReference Include="..\TestAspnetCore.Repository\TestAspnetCore.Repository.csproj" />
+     <ProjectReference Include="..\TestAspnetCore.Model\TestAspnetCore.Model.csproj" />
+  </ItemGroup>
+
 </Project>
