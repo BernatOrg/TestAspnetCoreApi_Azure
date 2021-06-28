@@ -26,7 +26,9 @@ namespace TestAspnetCore.Services.Services
 
         async Task<List<Person>> ITestServices.GetResultsFromRequestAsync(TwoParametersRequestDTO request)
         {
-            return await this.repository.GetElements(request.Name);
+            var task = this.repository.GetElements(request.Name);
+            task.Start();
+            return await task;
         }
 
         #endregion

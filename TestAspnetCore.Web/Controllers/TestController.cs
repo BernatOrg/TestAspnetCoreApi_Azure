@@ -23,8 +23,8 @@ namespace TestAspnetCore.Web.Controllers
         [HttpGet("echoping")] //GET api/v1/test/echoping
         public IActionResult Echoping() => Ok();
         
-        [HttpGet("gettest")] //GET api/v1/test/echoping
-        public async Task<IActionResult> GetTest(TwoParametersRequestDTO request)
+        [HttpGet("gettest")] //GET api/v1/test/gettest
+        public async Task<IActionResult> GetTest([FromQuery]TwoParametersRequestDTO request)
         {
             return Ok(await this.services.GetResultsFromRequestAsync(request));
         }
