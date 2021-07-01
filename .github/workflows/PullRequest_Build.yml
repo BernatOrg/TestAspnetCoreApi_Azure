@@ -23,6 +23,7 @@ jobs:
       working-directory: ./TestAspnetCore.Web/
     - name: Unit Test
       run: dotnet test --no-build --verbosity normal
+      working-directory: ./TestAspnetCore.UnitTest
     - name: Integration Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ./TestAspnetCore.IntegrationTest/
