@@ -1,0 +1,32 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+      steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: ./TestAspnetCore.Web/
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: ./TestAspnetCore.Web/
+    - name: Publish
+      run: |
+        dotnet publish -c Release -o apitestwebapp 
+    - name: Deploy to Azure WebApp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ secrets.AZURE_WEBAPP_APITEST_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_APITEST_PUBLISH_PROFILE }}
+        package: './apitestwebapp'
