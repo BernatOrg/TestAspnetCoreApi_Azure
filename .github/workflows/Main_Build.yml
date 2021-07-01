@@ -23,7 +23,7 @@ jobs:
       working-directory: ./TestAspnetCore.Web/
     - name: Publish
       run: |
-        dotnet publish -c Release -o apitestwebapp 
+        dotnet publish ./TestAspnetCore.Web/TestAspnetCore.Web.csproj -c Release -o apitestwebapp 
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
